@@ -1,0 +1,21 @@
+name: Unzip Source Code
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip files
+        run: |
+          unzip -q "真果鉴.zip" -d .
+          rm "真果鉴.zip"
+      - name: Commit and Push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "Unzip source code automatically"
+          git push
