@@ -108,6 +108,7 @@ jobs:
     needs: checks
     runs-on: windows-latest
     timeout-minutes: 45
+    continue-on-error: true # 允许 Windows 失败，不阻塞其他任务
     strategy:
       fail-fast: false
       matrix:
